@@ -1,0 +1,11 @@
+.bg-landing {
+  background-image: url('../images/frame1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-landing2 {
+  background-image: url('../images/frame2.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
