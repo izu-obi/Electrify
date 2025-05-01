@@ -12,7 +12,7 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row items-center justify-between w-full pt-35 px-5 sm:px-30 pb-10">
                 <div className="leftElement font-semibold text-4xl self-end text-white pb-50 sm:w-[35%]">
                     <h2>
-                        <span class="text-primary-blue">Electrify,</span> The smart choice
+                        <span className="text-primary-blue">Electrify,</span> The smart choice
                         for electricity.
                     </h2>
                 </div>
