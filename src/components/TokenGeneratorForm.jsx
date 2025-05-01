@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { MdElectricBolt } from "react-icons/md";
-import axios from 'axios';
+// import axios from 'axios';
+import  { payWithPaystack, isValidEmail } from "../utils/paystackUtils";
 
 const TokenGeneratorForm = () => {
   const [activeTab, setActiveTab] = useState("prepaid"); // 'prepaid' or 'postpaid'
@@ -9,34 +10,52 @@ const TokenGeneratorForm = () => {
     setActiveTab(tab);
   };
 
-  const handleSubmit = (formData) => {
-    const payload = activeTab === 'prepaid' 
-      ? {
-          serviceProvider: formData.serviceProvider,
-          meterNumber: formData.meterNumber,
-          phoneNumber: formData.phoneNumber,
-          email: formData.email,
-          amount: formData.amount,
-          type: 'prepaid'
-        }
-      : {
-          serviceProvider: formData.serviceProvider,
-          accountNumber: formData.accountNumber,
-          phoneNumber: formData.phoneNumber,
-          email: formData.email,
-          amount: formData.amount,
-          type: 'postpaid'
-        };
+  const handleSubmit = async (formData) => {
+    if (!formData.email || !formData.amount) {
+      alert('Please fill in all required fields');
+      return;
+    }
+  
+    if (Number(formData.amount) <= 0) {
+      alert('Please enter a valid amount');
+      return;
+    }
+  
+    try {
+      await payWithPaystack(formData);
+    } catch (error) {
+      console.error('Payment error:', error);
+      alert('Payment failed: ' + (error.message || 'Please try again'));
+    }
+    
+    // alert('Form data is incomplete:', formData);
+    // const payload = activeTab === 'prepaid' 
+    //   ? {
+    //       serviceProvider: formData.serviceProvider,
+    //       meterNumber: formData.meterNumber,
+    //       phoneNumber: formData.phoneNumber,
+    //       email: formData.email,
+    //       amount: formData.amount,
+    //       type: 'prepaid'
+    //     }
+    //   : {
+    //       serviceProvider: formData.serviceProvider,
+    //       accountNumber: formData.accountNumber,
+    //       phoneNumber: formData.phoneNumber,
+    //       email: formData.email,
+    //       amount: formData.amount,
+    //       type: 'postpaid'
+    //     };
 
-    axios.post('/api/electricity/purchase', payload)
-      .then(function (response) {
-        console.log(response);
-        alert("Electricity purchase successful!");
-      })
-      .catch(function (error) {
-        console.log(error);
-        alert("Purchase failed. Please try again.");
-      });
+    // axios.post('/api/electricity/purchase', payload)
+    //   .then(function (response) {
+    //     console.log(response);
+    //     alert("Electricity purchase successful!");
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //     alert("Purchase failed. Please try again.");
+    //   });
   };
 
   return (
@@ -45,7 +64,7 @@ const TokenGeneratorForm = () => {
       <div className="flex justify-center">
         <div className="mt-0 mb-0 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-6 px-6 rounded-lg sm:px-10">
-            {/* Tab Buttons - Design remains exactly the same */}
+            {/* Tab Buttons */}
             <div className="buttons-container flex gap-5 justify-center" style={{ paddingBottom: "25px" }}>
               <div
                 className={`buttons relative pb-2 cursor-pointer ${
@@ -65,7 +84,7 @@ const TokenGeneratorForm = () => {
               </div>
             </div>
 
-            {/* Forms - Design remains exactly the same */}
+            {/* Forms */}
             {activeTab === "prepaid" && (
               <div className="child">
                 <PrePaidForm onSubmit={handleSubmit} />
@@ -164,25 +183,25 @@ const PrePaidForm = ({ onSubmit }) => {
       {/* Pay Button */}
       <div className="flex justify-center pt-4">
       <button
-  type="button"
-  onClick={async () => {
-    if (!isValidEmail(formData.email)) {
-      alert('Please enter a valid email address');
-      return;
-    }
-    if (Number(formData.amount) <= 0) {
-      alert('Please enter a valid amount');
-      return;
-    }
-    await payWithPaystack(formData);
-  }}
-  className="flex items-center gap-2 bg-[#2F5291] text-white px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:bg-[#698bca] hover:-translate-y-1 hover:cursor-pointer"
->
-  <span>Buy Electricity</span>
-  <span className="text-xl">
-    <MdElectricBolt />
-  </span>
-</button>
+        type="button"
+        onClick={async () => {
+          if (!isValidEmail(formData.email)) {
+            alert('Please enter a valid email address');
+            return;
+          }
+          if (Number(formData.amount) <= 0) {
+            alert('Please enter a valid amount');
+            return;
+          }
+          await payWithPaystack(formData);
+        }}
+        className="flex items-center gap-2 bg-[#2F5291] text-white px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:bg-[#698bca] hover:-translate-y-1 hover:cursor-pointer"
+      >
+        <span>Buy Electricity</span>
+        <span className="text-xl">
+          <MdElectricBolt />
+        </span>
+      </button>
       </div>
     </form>
   );
@@ -268,25 +287,25 @@ const PostPaidForm = ({ onSubmit }) => {
       {/* Pay Button */}
       <div className="flex justify-center pt-4">
       <button
-  type="button"
-  onClick={async () => {
-    if (!isValidEmail(formData.email)) {
-      alert('Please enter a valid email address');
-      return;
-    }
-    if (Number(formData.amount) <= 0) {
-      alert('Please enter a valid amount');
-      return;
-    }
-    await payWithPaystack(formData);
-  }}
-  className="flex items-center gap-2 bg-[#2F5291] text-white px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:bg-[#698bca] hover:-translate-y-1 hover:cursor-pointer"
->
-  <span>Buy Electricity</span>
-  <span className="text-xl">
-    <MdElectricBolt />
-  </span>
-</button>
+        type="button"
+        onClick={async () => {
+          if (!isValidEmail(formData.email)) {
+            alert('Please enter a valid email address');
+            return;
+          }
+          if (Number(formData.amount) <= 0) {
+            alert('Please enter a valid amount');
+            return;
+          }
+          await payWithPaystack(formData);
+        }}
+        className="flex items-center gap-2 bg-[#2F5291] text-white px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:bg-[#698bca] hover:-translate-y-1 hover:cursor-pointer"
+      >
+        <span>Buy Electricity</span>
+        <span className="text-xl">
+          <MdElectricBolt />
+        </span>
+      </button>
       </div>
     </form>
   );

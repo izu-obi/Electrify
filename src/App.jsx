@@ -26,8 +26,8 @@ function App() {
   useEffect(() => {
     const initializeEmailJS = async () => {
       try {
-        if (import.meta.env.VITE_EMAILJS_USER_ID && window.emailjs) {
-          await emailjs.init(import.meta.env.VITE_EMAILJS_USER_ID);
+        if (userid && window.emailjs) {
+          await emailjs.init(userid);
           console.log('EmailJS initialized successfully');
           setEmailJsReady(true);
         }
