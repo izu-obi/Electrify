@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { MdElectricBolt } from "react-icons/md";
-// import axios from 'axios';
-import  { payWithPaystack, isValidEmail } from "../utils/paystackUtils";
+import { payWithPaystack, isValidEmail } from "../utils/paystackUtils";
 import { usePaystackPayment } from "react-paystack";
 
 const TokenGeneratorForm = () => {
@@ -28,39 +27,10 @@ const TokenGeneratorForm = () => {
       console.error('Payment error:', error);
       alert('Payment failed: ' + (error.message || 'Please try again'));
     }
-    
-    // alert('Form data is incomplete:', formData);
-    // const payload = activeTab === 'prepaid' 
-    //   ? {
-    //       serviceProvider: formData.serviceProvider,
-    //       meterNumber: formData.meterNumber,
-    //       phoneNumber: formData.phoneNumber,
-    //       email: formData.email,
-    //       amount: formData.amount,
-    //       type: 'prepaid'
-    //     }
-    //   : {
-    //       serviceProvider: formData.serviceProvider,
-    //       accountNumber: formData.accountNumber,
-    //       phoneNumber: formData.phoneNumber,
-    //       email: formData.email,
-    //       amount: formData.amount,
-    //       type: 'postpaid'
-    //     };
-
-    // axios.post('/api/electricity/purchase', payload)
-    //   .then(function (response) {
-    //     console.log(response);
-    //     alert("Electricity purchase successful!");
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //     alert("Purchase failed. Please try again.");
-    //   });
   };
 
   return (
-    <div className="bg-white text-gray-700 w-[38%] block rounded-xl"
+    <div className="bg-white text-gray-700 w-full max-w-xs md:w-[38%] block rounded-xl mx-auto"
       style={{ marginTop: "10px", height: "fit-content", paddingBottom: "20px" }}>
       <div className="flex justify-center">
         <div className="mt-0 mb-0 sm:mx-auto sm:w-full sm:max-w-md">
@@ -134,15 +104,15 @@ const PrePaidForm = ({ onSubmit }) => {
     },
     publicKey: import.meta.env.VITE_REACT_APP_PAYSTACK_PUBLIC_KEY,
     text: "Buy Electricity",
-  }), [formData])
+  }), [formData]);
 
   const onSuccess = (reference) => {
     alert("Payment Successful: Ref:" + reference);
   };
 
   const onClose = () => {
-    alert('payment closed')
-  }
+    alert('payment closed');
+  };
 
   const initializePayment = usePaystackPayment(config);
 
@@ -215,27 +185,27 @@ const PrePaidForm = ({ onSubmit }) => {
 
       {/* Pay Button */}
       <div className="flex justify-center pt-4">
-      <button
-        type="button"
-        onClick={async () => {
-          if (!isValidEmail(formData.email)) {
-            alert('Please enter a valid email address');
-            return;
-          }
-          if (Number(formData.amount) <= 0) {
-            alert('Please enter a valid amount');
-            return;
-          }
+        <button
+          type="button"
+          onClick={async () => {
+            if (!isValidEmail(formData.email)) {
+              alert('Please enter a valid email address');
+              return;
+            }
+            if (Number(formData.amount) <= 0) {
+              alert('Please enter a valid amount');
+              return;
+            }
 
-          initializePayment(onSuccess, onClose);
-        }}
-        className="flex items-center gap-2 bg-[#2F5291] text-white px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:bg-[#698bca] hover:-translate-y-1 hover:cursor-pointer"
-      >
-        <span>Buy Electricity</span>
-        <span className="text-xl">
-          <MdElectricBolt />
-        </span>
-      </button>
+            initializePayment(onSuccess, onClose);
+          }}
+          className="flex items-center gap-2 bg-[#2F5291] text-white px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:bg-[#698bca] hover:-translate-y-1 hover:cursor-pointer"
+        >
+          <span>Buy Electricity</span>
+          <span className="text-xl">
+            <MdElectricBolt />
+          </span>
+        </button>
       </div>
     </form>
   );
@@ -271,15 +241,15 @@ const PostPaidForm = ({ onSubmit }) => {
     },
     publicKey: import.meta.env.VITE_REACT_APP_PAYSTACK_PUBLIC_KEY,
     text: "Buy Electricity",
-  }), [formData])
+  }), [formData]);
 
   const onSuccess = (reference) => {
     alert("Payment Successful: Ref:" + reference);
   };
 
   const onClose = () => {
-    alert('payment closed')
-  }
+    alert('payment closed');
+  };
 
   const initializePayment = usePaystackPayment(config);
 
@@ -294,7 +264,7 @@ const PostPaidForm = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-0 space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label htmlFor="serviceProvider" className="block text-sm font-medium text-gray-700">
           Service Provider
@@ -352,27 +322,27 @@ const PostPaidForm = ({ onSubmit }) => {
 
       {/* Pay Button */}
       <div className="flex justify-center pt-4">
-      <button
-        type="button"
-        onClick={async () => {
-          if (!isValidEmail(formData.email)) {
-            alert('Please enter a valid email address');
-            return;
-          }
-          if (Number(formData.amount) <= 0) {
-            alert('Please enter a valid amount');
-            return;
-          }
+        <button
+          type="button"
+          onClick={async () => {
+            if (!isValidEmail(formData.email)) {
+              alert('Please enter a valid email address');
+              return;
+            }
+            if (Number(formData.amount) <= 0) {
+              alert('Please enter a valid amount');
+              return;
+            }
 
-          initializePayment(onSuccess, onClose);
-        }}
-        className="flex items-center gap-2 bg-[#2F5291] text-white px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:bg-[#698bca] hover:-translate-y-1 hover:cursor-pointer"
-      >
-        <span>Buy Electricity</span>
-        <span className="text-xl">
-          <MdElectricBolt />
-        </span>
-      </button>
+            initializePayment(onSuccess, onClose);
+          }}
+          className="flex items-center gap-2 bg-[#2F5291] text-white px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:bg-[#698bca] hover:-translate-y-1 hover:cursor-pointer"
+        >
+          <span>Buy Electricity</span>
+          <span className="text-xl">
+            <MdElectricBolt />
+          </span>
+        </button>
       </div>
     </form>
   );

@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
-import { useState,useEffect } from 'react';
-import { NavLink,useLocation } from 'react-router';
+import { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,17 +17,19 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [location]);
+
   return (
     <>
       <motion.nav
        key="navbar"
        animate={{paddingTop: isNotTop || !isHome ? "0.5rem" : "0.8rem", }}
        transition={{ type: "tween", duration: 0.25, ease: "easeInOut", }}
-       className={`navbar w-full ${isHome ? "fixed" : "sticky"} top-0 right-0 left-0 transition-all duration-300 z-30  ${ isHome &&
+       className={`navbar w-full ${isHome ? "fixed" : "sticky"} top-0 right-0 left-0 transition-all duration-300 z-50  ${ isHome &&
         isNotTop ? 'text-primary-blue shadow-md backdrop-blur-lg bg-white/30' : !isHome
         ? 'text-primary-blue shadow-md backdrop-blur-lg bg-white/30'
         : 'text-white'
-      }`} data-spy="affix" data-offset-top="197">
+      }`} data-spy="affix" data-offset-top="197"
+      >
         <div className="flex justify-between items-center gap-6 sm:py-3 lg:px-30 px-4 py-3">
           <div className="">
             <NavLink className="flex gap-3 md:flex text-base lg:text-xl items-center" to="/">
@@ -76,16 +78,15 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden bg-white/30 w-full">
+        {/* Mobile Menu */}
+        <div className={`md:hidden bg-white/90 backdrop-blur-lg text-primary-blue w-full transition-all duration-300 ${isOpen ? 'block' : 'hidden'}`}>
             <ul className="flex flex-col text-base p-4">
-              <li className="py-2 border-b"><NavLink to="/" onClick={() => setIsOpen(false)}>HOME</NavLink></li>
-              <li className="py-2 border-b"><NavLink to="/service" onClick={() => setIsOpen(false)}>ABOUT</NavLink></li>
-              <li className="py-2 border-b"><NavLink to="/project" onClick={() => setIsOpen(false)}>FAQ</NavLink></li>
-              <li className="py-2"><NavLink to="/contact" onClick={() => setIsOpen(false)}>CONTACT</NavLink></li>
+              <NavLink to="/" onClick={() => setIsOpen(false)}><li className="py-2 border-b">HOME</li></NavLink>
+              <NavLink to="/about" onClick={() => setIsOpen(false)}><li className="py-2 border-b">ABOUT</li></NavLink>
+              <NavLink to="/faq" onClick={() => setIsOpen(false)}><li className="py-2 border-b">FAQ</li></NavLink>
+              <NavLink to="/contact" onClick={() => setIsOpen(false)}><li className="py-2">CONTACT</li></NavLink>
             </ul>
-          </div>
-        )}
+        </div>
       </motion.nav>
     </>
   );

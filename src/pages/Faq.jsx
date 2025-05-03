@@ -18,7 +18,7 @@ export default function FAQ() {
       content: (
         <>
           You can recharge your depleted meter units by logging on to{" "}
-          <a href="https://www.electrify.ng" className="bg-primary-blue">www.electrify.ng</a>,
+          <a href="https://www.electrify.ng" className="text-primary-blue underline">www.electrify.ng</a>,
           selecting your DisCO from the list, supplying your meter number and amount, and the phone number to receive the credit token. 
           Our state-of-the-art and easy-to-use system will guide you through the rest of the process.
         </>
@@ -72,33 +72,42 @@ export default function FAQ() {
   ];
 
   return (
-    <div>
+    <div className="pb-10">
       {/* Hero Image */}
       <div>
-        <img className="w-full" src="../images/frame.png" alt="Banner" />
+        <img 
+          className="w-full h-auto" 
+          src="../images/frame.png" 
+          alt="Banner" 
+          loading="lazy"
+        />
       </div>
 
       {/* Accordion */}
-      <main className="pl-28 pr-28 py-10">
+      <main className="px-4 sm:px-6 md:px-28 py-6 md:py-10">
+        <h1 className="text-2xl md:text-3xl font-bold text-primary-blue mb-6 text-center md:text-left">
+          Frequently Asked Questions
+        </h1>
+        
         {accordionData.map((item, index) => (
-          <div key={index}>
+          <div key={index} className="mb-2">
             <button
-              className={`accordion ${activeIndex === index ? "active" : ""} w-full text-left bg-white text-primary-blue cursor-pointer p-4 border-b outline-none transition duration-400`}
+              className={`w-full text-left bg-white text-primary-blue cursor-pointer p-4 border-b border-gray-200 outline-none transition duration-300 flex justify-between items-center`}
               onClick={() => toggleAccordion(index)}
             >
-              {item.title}
-              <span className="float-right">{activeIndex === index ? "−" : "+"}</span>
+              <span className="text-sm md:text-base font-medium text-left pr-2">
+                {item.title}
+              </span>
+              <span className="text-lg font-bold">
+                {activeIndex === index ? "−" : "+"}
+              </span>
             </button>
             <div
-              className="panel overflow-hidden transition-max-height duration-300 ease-in-out"
-              style={{
-                maxHeight: activeIndex === index ? "500px" : "0",
-                padding: activeIndex === index ? "1rem" : "0 1rem",
-                backgroundColor: "#f9f9f9",
-                color: "#777",
-              }}
+              className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                activeIndex === index ? "max-h-[500px] py-4 px-4" : "max-h-0 py-0 px-4"
+              } bg-gray-50 text-gray-700 text-sm md:text-base`}
             >
-              <p>{item.content}</p>
+              {typeof item.content === 'string' ? <p>{item.content}</p> : item.content}
             </div>
           </div>
         ))}
