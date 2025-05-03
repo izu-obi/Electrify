@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { MdElectricBolt } from "react-icons/md";
 // import axios from 'axios';
 import  { payWithPaystack, isValidEmail } from "../utils/paystackUtils";
+import { usePaystackPayment } from "react-paystack";
 
 const TokenGeneratorForm = () => {
   const [activeTab, setActiveTab] = useState("prepaid"); // 'prepaid' or 'postpaid'
@@ -113,6 +114,38 @@ const PrePaidForm = ({ onSubmit }) => {
     amount: ''
   });
 
+  const config = useMemo(() => ({
+    reference: (new Date()).getTime().toString(),
+    email: formData.email,
+    amount: Number(formData.amount) * 100,
+    metadata: {
+      custom_fields: [
+        {
+          display_name: "Meter Number",
+          variable_name: "meter_number",
+          value: formData.meterNumber || formData.accountNumber,
+        },
+        {
+          display_name: "Phone Number",
+          variable_name: "phone_number",
+          value: formData.phoneNumber,
+        }
+      ]
+    },
+    publicKey: import.meta.env.VITE_REACT_APP_PAYSTACK_PUBLIC_KEY,
+    text: "Buy Electricity",
+  }), [formData])
+
+  const onSuccess = (reference) => {
+    alert("Payment Successful: Ref:" + reference);
+  };
+
+  const onClose = () => {
+    alert('payment closed')
+  }
+
+  const initializePayment = usePaystackPayment(config);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -193,7 +226,8 @@ const PrePaidForm = ({ onSubmit }) => {
             alert('Please enter a valid amount');
             return;
           }
-          await payWithPaystack(formData);
+
+          initializePayment(onSuccess, onClose);
         }}
         className="flex items-center gap-2 bg-[#2F5291] text-white px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:bg-[#698bca] hover:-translate-y-1 hover:cursor-pointer"
       >
@@ -216,6 +250,38 @@ const PostPaidForm = ({ onSubmit }) => {
     email: '',
     amount: ''
   });
+
+  const config = useMemo(() => ({
+    reference: (new Date()).getTime().toString(),
+    email: formData.email,
+    amount: Number(formData.amount) * 100,
+    metadata: {
+      custom_fields: [
+        {
+          display_name: "Account Number",
+          variable_name: "account_number",
+          value: formData.accountNumber,
+        },
+        {
+          display_name: "Phone Number",
+          variable_name: "phone_number",
+          value: formData.phoneNumber,
+        }
+      ]
+    },
+    publicKey: import.meta.env.VITE_REACT_APP_PAYSTACK_PUBLIC_KEY,
+    text: "Buy Electricity",
+  }), [formData])
+
+  const onSuccess = (reference) => {
+    alert("Payment Successful: Ref:" + reference);
+  };
+
+  const onClose = () => {
+    alert('payment closed')
+  }
+
+  const initializePayment = usePaystackPayment(config);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -297,7 +363,8 @@ const PostPaidForm = ({ onSubmit }) => {
             alert('Please enter a valid amount');
             return;
           }
-          await payWithPaystack(formData);
+
+          initializePayment(onSuccess, onClose);
         }}
         className="flex items-center gap-2 bg-[#2F5291] text-white px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:bg-[#698bca] hover:-translate-y-1 hover:cursor-pointer"
       >
