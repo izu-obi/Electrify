@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
 
   return (
     <>
-      {/* Hero Image - Full width with lazy loading */}
+      {/* Hero Image */}
       <div className="w-full">
         <img 
           src="../images/privacyPolicy.png" 

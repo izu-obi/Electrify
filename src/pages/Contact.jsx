@@ -9,7 +9,7 @@ const Contact = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
-      {/* Hero Image - Full width on mobile */}
+      {/* Hero Image */}
       <div className="w-full">
         <img 
           className="w-full h-auto object-cover"
@@ -19,9 +19,9 @@ const Contact = () => {
         />
       </div>
 
-      {/* Main Content Section - Stacked on mobile */}
+      {/* Main Content Section */}
       <section className="px-4 sm:px-6 md:px-28 py-8 md:py-16 flex flex-col md:flex-row gap-8 md:gap-12">
-        {/* Text Content - Full width on mobile */}
+        {/* Text Content */}
         <div className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium leading-tight">
             Here at <span className="text-primary-blue">Electrify</span>, your
@@ -38,7 +38,7 @@ const Contact = () => {
           </button>
         </div>
 
-        {/* Image - Full width on mobile */}
+        {/* Image */}
         <div className="w-full md:w-1/2 flex justify-center mt-6 md:mt-0">
           <img 
             className="w-full max-w-md md:max-w-lg object-contain" 
@@ -52,7 +52,7 @@ const Contact = () => {
       {/* Divider */}
       <div className="w-full max-w-2xl h-px bg-gray-300 mx-auto" />
 
-      {/* Support Channels Section - Stacked on mobile */}
+      {/* Support Channels Section */}
       <section className="px-4 sm:px-6 md:px-28 py-8 md:py-16">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-[#2F5291] text-xl sm:text-2xl md:text-3xl font-medium">

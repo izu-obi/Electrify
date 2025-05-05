@@ -32,9 +32,13 @@ const Navbar = () => {
       >
         <div className="flex justify-between items-center gap-6 sm:py-3 lg:px-30 px-4 py-3">
           <div className="">
-            <NavLink className="flex gap-3 md:flex text-base lg:text-xl items-center" to="/">
-              <img src="/images/logo.svg" alt="Logo" className="w-[50px] sm:w-60px] md:w-[60px] lg:w-[70px] object-contain" />
-              <h2>ELECTRIFY</h2>
+            <NavLink className="flex gap-3 items-center" to="/">
+              <img 
+                src="/images/logo.svg" 
+                alt="Logo" 
+                className="w-[50px] sm:w-[60px] md:w-[60px] lg:w-[70px] object-contain" 
+              />
+              <h2 className="brand text-xl lg:text-2xl">ELECTRIFY</h2>
             </NavLink>
           </div>
 

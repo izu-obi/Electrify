@@ -5,3 +5,19 @@
     --color-primary-blue: #2F5291;
     --color-primary-lightblue: #698bca;
 }
+
+@font-face {
+    font-family: 'EngraversGothic BT';
+    src: url('/fonts/EngraversGothicBT-Regular.woff2') format('woff2'),
+         url('/fonts/EngraversGothicBT-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  .brand {
+    font-family: 'EngraversGothic BT', sans-serif !important;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 1rem;
+  }
