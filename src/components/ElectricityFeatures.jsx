@@ -2,11 +2,11 @@ import React from "react";
 
 const ElectricityFeatures = () => {
   return (
-    <div className="relative bg-cover bg-no-repeat flex justify-center items-start px-4 sm:px-8 md:px-16 lg:px-28 pt-6 sm:pt-10 w-full min-h-[90vh] md:min-h-[50vh]">
-      <div className="w-full md:w-[70%] lg:w-[50%] flex flex-col items-center">
+    <div className="relative flex justify-center lg:justify-end items-start px-4 sm:px-8 md:px-16 lg:px-28 pt-20 sm:pt-25 w-full min-h-[90vh] md:min-h-[50vh] bg-cover bg-no-repeat lg:bg-none">
+      <div className="w-full md:w-[70%] lg:w-[45%] flex flex-col items-center lg:items-start">
         
         {/* Heading */}
-        <div className="text-center text-xl sm:text-2xl w-full text-white">
+        <div className="text-center lg:text-left text-xl sm:text-2xl w-full text-white">
           <h2 className="font-bold leading-tight">
             We've made paying for electricity
             <span className="md:hidden"><br /></span>
@@ -15,10 +15,10 @@ const ElectricityFeatures = () => {
         </div>
     
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mt-6 sm:mt-8 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mt-15 sm:mt-8 w-full">
           
           {/* Card 1 */}
-          <div className="flex flex-col items-start p-3 sm:p-4 rounded-lg bg-black/10 backdrop-blur-sm">
+          <div className="flex flex-col items-start p-3 sm:p-4 rounded-lg bg-black/50 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none">
             <img
               src="../images/credit-card 1.png"
               alt="Pay with your Card"
@@ -33,7 +33,7 @@ const ElectricityFeatures = () => {
           </div>
     
           {/* Card 2 */}
-          <div className="flex flex-col items-start p-3 sm:p-4 rounded-lg bg-black/10 backdrop-blur-sm">
+          <div className="flex flex-col items-start p-3 sm:p-4 rounded-lg bg-black/50 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none">
             <img
               src="../images/management (1) 1.png"
               alt="Proxy Buying"
@@ -48,7 +48,7 @@ const ElectricityFeatures = () => {
           </div>
     
           {/* Card 3 */}
-          <div className="flex flex-col items-start p-3 sm:p-4 rounded-lg bg-black/10 backdrop-blur-sm">
+          <div className="flex flex-col items-start p-3 sm:p-4 rounded-lg bg-black/50 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none">
             <img
               src="../images/convenient 1.png"
               alt="24/7 Customer Service"
@@ -63,7 +63,7 @@ const ElectricityFeatures = () => {
           </div>
     
           {/* Card 4 */}
-          <div className="flex flex-col items-start p-3 sm:p-4 rounded-lg bg-black/10 backdrop-blur-sm">
+          <div className="flex flex-col items-start p-3 sm:p-4 rounded-lg bg-black/50 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none">
             <img
               src="../images/convenient 2.png"
               alt="Convenience"

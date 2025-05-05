@@ -30,10 +30,10 @@ const TokenGeneratorForm = () => {
   };
 
   return (
-    <div className="bg-white text-gray-700 w-full max-w-xs md:w-[38%] block rounded-xl mx-auto"
-      style={{ marginTop: "10px", height: "fit-content", paddingBottom: "20px" }}>
+    <div className="bg-white text-gray-700 w-[70%] max-w-xs lg:max-w-md xl:max-w-lg block rounded-xl mx-auto"
+      style={{ marginTop: "100px", height: "fit-content", paddingBottom: "15px" }}>
       <div className="flex justify-center">
-        <div className="mt-0 mb-0 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="mt-0 mb-0 sm:mx-auto sm:w-full sm:max-w-md lg:max-w-none">
           <div className="bg-white py-6 px-6 rounded-lg sm:px-10">
             {/* Tab Buttons */}
             <div className="buttons-container flex gap-5 justify-center" style={{ paddingBottom: "25px" }}>

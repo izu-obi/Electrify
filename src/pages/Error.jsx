@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Error = () => {
+
+    useEffect(() => {
+        document.title = "Error | Electrify";
+      }, []);
+      
     return ( 
         <main className="flex min-h-screen items-center justify-center bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
             <div className="text-center w-full max-w-md">

@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const About = () => {
+
+useEffect(() => {
+  document.title = "About Us | Electrify";
+}, []);
+
   return (
     <div className="overflow-x-hidden">
       {/* Header Image - Full width on mobile */}

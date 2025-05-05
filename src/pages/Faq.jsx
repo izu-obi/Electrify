@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function FAQ() {
+
+  useEffect(() => {
+    document.title = "FAQ | Electrify";
+  }, []);
+
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleAccordion = (index) => {

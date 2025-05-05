@@ -1,6 +1,12 @@
 import React from "react";
+import { useEffect } from "react";
 
 const TermsofService = () => {
+
+  useEffect(() => {
+    document.title = "Terms of Service | Electrify";
+  }, []);
+
   return (
     <>
       {/* Hero Image - Full width with lazy loading */}

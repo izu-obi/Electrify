@@ -1,6 +1,12 @@
 import { FaInstagram, FaWhatsapp, FaFacebookF } from 'react-icons/fa';
+import { useEffect } from "react";
 
 const Contact = () => {
+
+  useEffect(() => {
+    document.title = "Contact Us | Electrify";
+  }, []);
+
   return (
     <div className="max-w-7xl mx-auto">
       {/* Hero Image - Full width on mobile */}

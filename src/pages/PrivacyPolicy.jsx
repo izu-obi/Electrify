@@ -1,6 +1,12 @@
 import React from 'react';
+import { useEffect } from 'react';
 
 const PrivacyPolicy = () => {
+
+  useEffect(() => {
+    document.title = "Privacy Policy | Electrify";
+  }, []);
+
   return (
     <>
       {/* Hero Image - Full width with lazy loading */}
