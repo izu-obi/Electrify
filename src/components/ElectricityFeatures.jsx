@@ -2,7 +2,7 @@ import React from "react";
 
 const ElectricityFeatures = () => {
   return (
-    <div className="relative flex justify-center lg:justify-end items-start px-4 sm:px-8 md:px-16 lg:px-28 pt-20 sm:pt-25 w-full min-h-[90vh] md:min-h-[50vh] bg-cover bg-no-repeat lg:bg-none">
+    <div className="relative flex justify-center lg:justify-end items-start px-4 sm:px-8 md:px-16 lg:px-28 pt-15 sm:pt-20 w-full min-h-[90vh] md:min-h-[50vh] bg-cover bg-no-repeat lg:bg-none">
       <div className="w-full md:w-[70%] lg:w-[45%] flex flex-col items-center lg:items-start">
         
         {/* Heading */}
@@ -18,7 +18,7 @@ const ElectricityFeatures = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mt-15 sm:mt-8 w-full">
           
           {/* Card 1 */}
-          <div className="flex flex-col items-start p-3 sm:p-4 rounded-lg bg-black/50 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none">
+          <div className="flex flex-col items-start p-3 sm:p-4 rounded-lg bg-black/70 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none">
             <img
               src="../images/credit-card 1.png"
               alt="Pay with your Card"
@@ -33,7 +33,7 @@ const ElectricityFeatures = () => {
           </div>
     
           {/* Card 2 */}
-          <div className="flex flex-col items-start p-3 sm:p-4 rounded-lg bg-black/50 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none">
+          <div className="flex flex-col items-start p-3 sm:p-4 rounded-lg bg-black/70 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none">
             <img
               src="../images/management (1) 1.png"
               alt="Proxy Buying"
@@ -48,7 +48,7 @@ const ElectricityFeatures = () => {
           </div>
     
           {/* Card 3 */}
-          <div className="flex flex-col items-start p-3 sm:p-4 rounded-lg bg-black/50 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none">
+          <div className="flex flex-col items-start p-3 sm:p-4 rounded-lg bg-black/70 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none">
             <img
               src="../images/convenient 1.png"
               alt="24/7 Customer Service"
@@ -63,7 +63,7 @@ const ElectricityFeatures = () => {
           </div>
     
           {/* Card 4 */}
-          <div className="flex flex-col items-start p-3 sm:p-4 rounded-lg bg-black/50 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none">
+          <div className="flex flex-col items-start p-3 sm:p-4 rounded-lg bg-black/70 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none">
             <img
               src="../images/convenient 2.png"
               alt="Convenience"

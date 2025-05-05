@@ -38,7 +38,7 @@ const Navbar = () => {
                 alt="Logo" 
                 className="w-[50px] sm:w-[60px] md:w-[60px] lg:w-[70px] object-contain" 
               />
-              <h2 className="brand text-xl lg:text-2xl">ELECTRIFY</h2>
+              <h2 className="brand lg:text-2xl">ELECTRIFY</h2>
             </NavLink>
           </div>
 
